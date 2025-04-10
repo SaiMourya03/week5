@@ -17,13 +17,20 @@ const clickMe = () => {
 }
  
 const submitForm = () => {
+    console.log('entered form')
     let formData = {};
     formData.first_name = $('#first_name').val();
     formData.last_name = $('#last_name').val();
     formData.password = $('#password').val();
     formData.email = $('#email').val();
- 
     console.log("Form Data Submitted: ", formData);
+    fetch('/home')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert("Form submitted successfully!");
+        })
+        .catch(err => console.error('Error:', err));  
 }
  
 const addCards = (items) => {
